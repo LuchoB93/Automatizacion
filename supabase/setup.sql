@@ -46,5 +46,13 @@ begin
 end;
 $$;
 
+-- 5. Permisos para la clave que usa n8n (service_role). Los proyectos nuevos
+--    de Supabase no se los dan solos a las tablas creadas por SQL: sin esto,
+--    el insert de n8n falla con "permission denied for table documents".
+grant usage on schema public to service_role;
+grant all on table public.documents to service_role;
+grant usage, select on sequence public.documents_id_seq to service_role;
+grant execute on function public.match_documents(vector, int, jsonb) to service_role;
+
 -- Para volver a indexar desde cero (antes de correr de nuevo el workflow de indexado):
 -- truncate table documents;
