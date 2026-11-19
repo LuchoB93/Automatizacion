@@ -1,0 +1,75 @@
+{
+  "name": "Rodado · 3. Alertas de error",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "## 3. Workflow de errores\nSe elige en *Settings → Error workflow* del workflow principal. Si una ejecución falla por algo no previsto (credencial vencida, API caída), avisa por mail al encargado.",
+        "height": 180,
+        "width": 460,
+        "color": 3
+      },
+      "id": "e4449283-a1c9-4a0a-b503-df9aec50ad39",
+      "name": "Nota 0",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -60,
+        -240
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "bb043238-3949-4cdd-a4c5-3a732582ec6d",
+      "name": "Falló una ejecución",
+      "type": "n8n-nodes-base.errorTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "message",
+        "operation": "send",
+        "sendTo": "TU_CORREO@gmail.com",
+        "subject": "=[Rodado] Falló el workflow: {{ $json.workflow.name }}",
+        "emailType": "text",
+        "message": "=Falló una ejecución del sistema de consultas.\n\nWorkflow: {{ $json.workflow.name }}\nNodo: {{ $json.execution.lastNodeExecuted }}\nError: {{ $json.execution.error.message }}\nVer la ejecución: {{ $json.execution.url }}\n\nLas consultas de ese momento pueden haber quedado sin responder: revisá la hoja Registro.",
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "id": "4e23ba83-ec20-49e1-89fb-344743078d52",
+      "name": "Avisar al encargado",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        260,
+        0
+      ]
+    }
+  ],
+  "connections": {
+    "Falló una ejecución": {
+      "main": [
+        [
+          {
+            "node": "Avisar al encargado",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "pinData": {},
+  "meta": {
+    "templateCredsSetupCompleted": false
+  },
+  "tags": []
+}
