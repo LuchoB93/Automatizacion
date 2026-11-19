@@ -8,7 +8,7 @@
         "width": 460,
         "color": 3
       },
-      "id": "e4449283-a1c9-4a0a-b503-df9aec50ad39",
+      "id": "37350a1f-0c59-48fa-8f59-3245f0e74f61",
       "name": "Nota 0",
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
@@ -19,7 +19,7 @@
     },
     {
       "parameters": {},
-      "id": "bb043238-3949-4cdd-a4c5-3a732582ec6d",
+      "id": "038a8ff2-0080-4214-9df8-6adbf8d9096c",
       "name": "Falló una ejecución",
       "type": "n8n-nodes-base.errorTrigger",
       "typeVersion": 1,
@@ -40,7 +40,7 @@
           "appendAttribution": false
         }
       },
-      "id": "4e23ba83-ec20-49e1-89fb-344743078d52",
+      "id": "1605457c-b6e5-4979-a7b2-400899a5c1f0",
       "name": "Avisar al encargado",
       "type": "n8n-nodes-base.gmail",
       "typeVersion": 2.1,

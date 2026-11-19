@@ -8,7 +8,7 @@
         "width": 560,
         "color": 5
       },
-      "id": "317e4757-b36b-44b2-88c5-7f6cc70ba2e3",
+      "id": "51f22864-b78c-4f5e-a977-940999aeabd5",
       "name": "Nota 0",
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
@@ -19,7 +19,7 @@
     },
     {
       "parameters": {},
-      "id": "9e280599-a97e-4ae3-a033-2f6b00756c14",
+      "id": "a9859cba-ea82-448d-b909-db8753c1ce30",
       "name": "Ejecutar indexado",
       "type": "n8n-nodes-base.manualTrigger",
       "typeVersion": 1,
@@ -32,7 +32,7 @@
       "parameters": {
         "jsCode": "// Los manuales viven en el repositorio, en base-conocimiento/.\nconst repo_raw = 'https://raw.githubusercontent.com/LuchoB93/Automatizacion/main/base-conocimiento/';\nconst archivos = [\"01-servicios-y-precios.md\", \"02-turnos-y-horarios.md\", \"03-garantias-y-reclamos.md\", \"04-problemas-frecuentes.md\", \"05-pagos-envios-y-politicas.md\"];\nreturn archivos.map(archivo => ({ json: { archivo, url: repo_raw + archivo } }));"
       },
-      "id": "ef2c62f7-a969-478d-abd0-badca63052a2",
+      "id": "960ec814-cc70-4296-9922-e09ba07ff46f",
       "name": "Lista de documentos",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
@@ -54,7 +54,7 @@
           "timeout": 15000
         }
       },
-      "id": "9be30403-2ba5-4026-a19c-99b4894aa136",
+      "id": "687538c9-4588-4ebc-8f9d-e2b2a2f4678f",
       "name": "Descargar documento",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
@@ -77,7 +77,7 @@
           },
           "conditions": [
             {
-              "id": "eea7c25b-5352-4c04-9a4c-cf4eb039d21b",
+              "id": "f83e14a2-5e2a-4b2e-b350-d64f710b7f32",
               "leftValue": "={{ ($json.texto || \"\").length }}",
               "operator": {
                 "type": "number",
@@ -91,7 +91,7 @@
         "looseTypeValidation": true,
         "options": {}
       },
-      "id": "a1de7689-8190-48a6-ba40-6a227767844d",
+      "id": "acdeecce-b030-44ee-832f-9a533840f2da",
       "name": "¿Bajó bien?",
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
@@ -113,7 +113,7 @@
           "queryName": "match_documents"
         }
       },
-      "id": "0cbe5b04-b30c-4975-a0e2-10b350a07707",
+      "id": "0be1afab-a16c-4254-8143-557c50d15fb8",
       "name": "Guardar en Supabase",
       "type": "@n8n/n8n-nodes-langchain.vectorStoreSupabase",
       "typeVersion": 1.1,
@@ -126,7 +126,7 @@
       "parameters": {
         "modelName": "models/gemini-embedding-001"
       },
-      "id": "fcd82335-76cc-4eb3-bb32-f0f30aa9deca",
+      "id": "f1b82672-e7c6-4d69-b880-51898c244e2c",
       "name": "Embeddings Gemini (indexado)",
       "type": "@n8n/n8n-nodes-langchain.embeddingsGoogleGemini",
       "typeVersion": 1,
@@ -151,7 +151,7 @@
           }
         }
       },
-      "id": "25f514a3-3ae0-4dec-a540-a4bb8ade4cd4",
+      "id": "7930eac0-439e-41e6-a4c6-987b52656ff4",
       "name": "Cargar texto",
       "type": "@n8n/n8n-nodes-langchain.documentDefaultDataLoader",
       "typeVersion": 1.1,
@@ -166,7 +166,7 @@
         "chunkOverlap": 120,
         "options": {}
       },
-      "id": "92d98312-1b8d-41d9-9f0f-66a1aa0b1a68",
+      "id": "2e867664-b030-4565-867c-ce378ee18669",
       "name": "Partir en fragmentos",
       "type": "@n8n/n8n-nodes-langchain.textSplitterRecursiveCharacterTextSplitter",
       "typeVersion": 1,
@@ -179,7 +179,7 @@
       "parameters": {
         "errorMessage": "=No se pudo leer {{ $('Lista de documentos').item.json.archivo }}: ¿el repo es público y la URL raw es correcta?"
       },
-      "id": "3098909e-06da-4e19-969e-261c1553c9bf",
+      "id": "62bf33d4-eb99-4c3e-8400-ded9ca1ac17e",
       "name": "Documento vacío o inaccesible",
       "type": "n8n-nodes-base.stopAndError",
       "typeVersion": 1,

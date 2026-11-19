@@ -8,7 +8,7 @@
         "width": 520,
         "color": 5
       },
-      "id": "d32e8af2-a1e5-4ca6-95ef-69b6ce4b1fcd",
+      "id": "f67c6683-9b9f-49ae-bfbd-39d88bc68c67",
       "name": "Nota 0",
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
@@ -27,7 +27,7 @@
           "responseCode": 202
         }
       },
-      "id": "03848131-433c-4e6d-81b6-6241630eee37",
+      "id": "7b39b7af-96b6-46ae-88a7-fcf13e778c95",
       "name": "Formulario web",
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2,
@@ -35,7 +35,7 @@
         0,
         -120
       ],
-      "webhookId": "2a2d11a3-3dee-4fdd-a897-506586bc6152"
+      "webhookId": "e4b731e1-852d-4dc0-a198-dfac6d072225"
     },
     {
       "parameters": {
@@ -52,7 +52,7 @@
         },
         "options": {}
       },
-      "id": "e2ca26e6-8d4b-4abe-8021-21a7f3e87e31",
+      "id": "8fda9368-26f8-4744-ad39-3cbf2f4e1f3b",
       "name": "Mail entrante",
       "type": "n8n-nodes-base.gmailTrigger",
       "typeVersion": 1.2,
@@ -66,37 +66,37 @@
         "assignments": {
           "assignments": [
             {
-              "id": "a1afa9e5-77f5-456e-8e43-171795cdae3f",
+              "id": "29141396-8d97-45bc-a0c9-4545d33dbc52",
               "name": "canal",
               "value": "formulario_web",
               "type": "string"
             },
             {
-              "id": "feb5f7ae-7b35-427e-adcb-58fabb5a38e8",
+              "id": "c4856777-1141-4d97-8541-e473579dcdd7",
               "name": "nombre",
               "value": "={{ ($json.body.nombre || \"\").trim() }}",
               "type": "string"
             },
             {
-              "id": "cf3f3203-fdbf-4c2f-8251-e968500e360e",
+              "id": "b300b6aa-78be-4e7c-917b-b7d3245a30a0",
               "name": "email",
               "value": "={{ ($json.body.email || \"\").trim().toLowerCase() }}",
               "type": "string"
             },
             {
-              "id": "67e02ee0-0a2b-4bc2-9106-2cce63663f65",
+              "id": "69613f03-f649-4c2a-b498-1b47665e3762",
               "name": "asunto",
               "value": "={{ ($json.body.asunto || \"Consulta desde la web\").trim() }}",
               "type": "string"
             },
             {
-              "id": "5097264e-334e-44ab-9166-1d5e4a97e10a",
+              "id": "2f1388f8-c440-4b62-995c-dc8ff63dc2ef",
               "name": "mensaje",
               "value": "={{ ($json.body.mensaje || \"\").trim() }}",
               "type": "string"
             },
             {
-              "id": "11a32a89-930a-4c1f-b00d-8900ecad09e6",
+              "id": "aaa49dcc-6abd-4031-854d-6d764444d12d",
               "name": "recibida",
               "value": "={{ $now.toFormat(\"yyyy-LL-dd HH:mm\") }}",
               "type": "string"
@@ -105,7 +105,7 @@
         },
         "options": {}
       },
-      "id": "40b11187-b151-421c-9f5d-4a858d552be5",
+      "id": "a7c680c4-36da-447a-b173-469c33d58ea1",
       "name": "Normalizar formulario",
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
@@ -119,37 +119,37 @@
         "assignments": {
           "assignments": [
             {
-              "id": "864889c3-c97f-4e95-a6dc-220f02a0d266",
+              "id": "6ba5908d-297e-4f1f-920c-22eb97d35ec9",
               "name": "canal",
               "value": "mail",
               "type": "string"
             },
             {
-              "id": "9e6ec295-52d0-4fd8-8697-4a96beeddc31",
+              "id": "6f959e5f-524f-4f7b-8b69-66d6b6ce443b",
               "name": "nombre",
               "value": "={{ ($json.from?.value?.[0]?.name || \"\").trim() }}",
               "type": "string"
             },
             {
-              "id": "9bd76598-3284-478c-8d4d-664c23bb8ca8",
+              "id": "61deff36-86b5-4850-aa8d-cc12db102b90",
               "name": "email",
               "value": "={{ ($json.from?.value?.[0]?.address || \"\").trim().toLowerCase() }}",
               "type": "string"
             },
             {
-              "id": "287d0645-5738-46e9-a125-02ce0c036820",
+              "id": "7ceb89ce-4fe6-4314-903b-2ca292ded84c",
               "name": "asunto",
               "value": "={{ $json.subject || \"(sin asunto)\" }}",
               "type": "string"
             },
             {
-              "id": "44292462-ffe8-4308-a9c2-59dd075db7b7",
+              "id": "52a177ab-2e28-434a-a5eb-5c71502f7c58",
               "name": "mensaje",
               "value": "={{ ($json.text || $json.snippet || \"\").split(/\\n>|\\nEl .* escribió:/)[0].trim().slice(0, 4000) }}",
               "type": "string"
             },
             {
-              "id": "5baa627b-3d71-4603-9883-f10eda404d8d",
+              "id": "2feedd16-f7d3-412c-b260-7d71043a909a",
               "name": "recibida",
               "value": "={{ $now.toFormat(\"yyyy-LL-dd HH:mm\") }}",
               "type": "string"
@@ -158,7 +158,7 @@
         },
         "options": {}
       },
-      "id": "cf5dcafd-3336-424e-8886-09c6b0ac94ed",
+      "id": "a7970fa4-481e-446f-982b-d59b36892790",
       "name": "Normalizar mail",
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
@@ -174,7 +174,7 @@
         "width": 360,
         "color": 6
       },
-      "id": "f7772c14-bddf-4ea3-a405-dcc235ab0d3d",
+      "id": "55664420-9505-44ca-8c33-ee7d62defffa",
       "name": "Nota 5",
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
@@ -194,7 +194,7 @@
           },
           "conditions": [
             {
-              "id": "4df60830-92d7-45ba-ad8f-fffe20dd9f85",
+              "id": "39359162-6129-49ec-9a8f-9826ea904418",
               "leftValue": "={{ $json.email }}",
               "operator": {
                 "type": "string",
@@ -203,7 +203,7 @@
               "rightValue": "^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$"
             },
             {
-              "id": "18c87ef7-6e4f-4054-ba1c-d3c593c7dc64",
+              "id": "8d8e0ac7-d385-4009-a381-32fd9d3150fc",
               "leftValue": "={{ $json.mensaje.length }}",
               "operator": {
                 "type": "number",
@@ -212,7 +212,7 @@
               "rightValue": 5
             },
             {
-              "id": "f36d8bb9-d55f-479e-ab08-f8e7ee9d8bc5",
+              "id": "6ebbccc0-a2d3-4df4-a255-4a6aa5557791",
               "leftValue": "={{ $json.mensaje.length }}",
               "operator": {
                 "type": "number",
@@ -226,7 +226,7 @@
         "looseTypeValidation": true,
         "options": {}
       },
-      "id": "6f421456-7e88-47ca-acbf-ccd5ea202d66",
+      "id": "3b513d2b-74d0-4d8d-b178-3b61a7bfad51",
       "name": "¿Consulta válida?",
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
@@ -240,79 +240,79 @@
         "assignments": {
           "assignments": [
             {
-              "id": "41b0ffcd-7dae-44ea-a7a4-853f0264e3dc",
+              "id": "4775e758-3ad2-42f1-bcc6-9bf4701aee3e",
               "name": "fecha",
               "value": "={{ $json.recibida }}",
               "type": "string"
             },
             {
-              "id": "89ae90d1-f5a2-4386-803a-1fb0b644d541",
+              "id": "df305c53-a9b5-4aea-9c06-f55d353bafe5",
               "name": "canal",
               "value": "={{ $json.canal }}",
               "type": "string"
             },
             {
-              "id": "661b2176-a584-4d93-9166-9cd89dd8501e",
+              "id": "2f7a33b5-dfdb-4187-b134-7885f3d30e15",
               "name": "nombre",
               "value": "={{ $json.nombre }}",
               "type": "string"
             },
             {
-              "id": "be40c92e-505b-40dc-99d2-d14783461b9f",
+              "id": "72c47192-1423-4106-9ae6-566d768d4a78",
               "name": "email",
               "value": "={{ $json.email }}",
               "type": "string"
             },
             {
-              "id": "e63fb034-1370-4686-8f46-2501d9ef9fc3",
+              "id": "7d18a321-a110-4bac-8ea2-a5f43d1ef028",
               "name": "asunto",
               "value": "={{ $json.asunto }}",
               "type": "string"
             },
             {
-              "id": "675a8f8e-88ee-4015-afee-f89e278d3422",
+              "id": "5217bda6-2bb5-4dcc-a052-f4293c08b067",
               "name": "mensaje",
               "value": "={{ $json.mensaje.slice(0, 500) }}",
               "type": "string"
             },
             {
-              "id": "f1f2db63-7570-44c4-98b4-ebe799f635fa",
+              "id": "7115584f-1433-4a56-b743-2be4d825c383",
               "name": "accion",
               "value": "descartada",
               "type": "string"
             },
             {
-              "id": "c8eb23d7-27a3-4aa7-8b38-bdbd391c18ac",
+              "id": "86a58a62-9bf3-4bd0-aa9a-3f17270040e0",
               "name": "categoria",
               "value": "",
               "type": "string"
             },
             {
-              "id": "8b9e44a4-6688-4e27-832d-c69c3af72b55",
+              "id": "cdd76a1e-1faf-4a73-a1df-b2119823f4b4",
               "name": "prioridad",
               "value": "",
               "type": "string"
             },
             {
-              "id": "0a19503f-48f2-480b-8c27-21cbdfcf475a",
+              "id": "4b22b9bf-b939-4322-adf5-c69c86a76865",
               "name": "confianza",
               "value": "",
               "type": "string"
             },
             {
-              "id": "6b59bb51-27e6-4f25-aa1c-7864d1fc7398",
+              "id": "bc016dd3-56ee-488d-9eac-85544c89d060",
               "name": "fuentes",
               "value": "",
               "type": "string"
             },
             {
-              "id": "474369bb-1ad4-4095-94cb-68ac8f580362",
+              "id": "3e25448e-0f71-4073-8232-4752dfc3e41a",
               "name": "resumen",
               "value": "Sin mail válido o mensaje vacío/demasiado largo: no se llamó al agente",
               "type": "string"
             },
             {
-              "id": "174314fa-4179-4478-98c5-ab77454725ac",
+              "id": "07171e19-327e-4c7a-89a3-6e1196223f8f",
               "name": "estado",
               "value": "descartada",
               "type": "string"
@@ -321,7 +321,7 @@
         },
         "options": {}
       },
-      "id": "00689796-7b8e-450c-a0d8-e0e23ac9c8d6",
+      "id": "da3bf21b-fec9-40a3-ace6-e74498338573",
       "name": "Fila descartada",
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
@@ -341,7 +341,7 @@
         },
         "sheetName": {
           "__rl": true,
-          "value": "Registro",
+          "value": "registro",
           "mode": "name"
         },
         "columns": {
@@ -352,7 +352,7 @@
         },
         "options": {}
       },
-      "id": "5da8266d-6086-4a00-a60a-206d7959da17",
+      "id": "2c282e83-0612-45fb-a22e-a51adfec6dd5",
       "name": "Registrar descartada",
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.5,
@@ -363,12 +363,12 @@
     },
     {
       "parameters": {
-        "content": "## AI Agent con RAG\nGemini 2.5 Flash + herramienta `base_conocimiento` (Supabase pgvector, embeddings Gemini).\nEl **Structured Output Parser** obliga a devolver la decisión en JSON.\nSi el modelo o la base vectorial fallan (timeout, cuota, respuesta vacía) reintenta 3 veces y sale por la **salida de error** → contingencia.",
+        "content": "## AI Agent con RAG\nGemini Flash + herramienta `base_conocimiento` (Supabase pgvector, embeddings Gemini).\nEl **Structured Output Parser** obliga a devolver la decisión en JSON.\nSi el modelo o la base vectorial fallan (timeout, cuota, respuesta vacía) reintenta 3 veces y sale por la **salida de error** → contingencia.",
         "height": 200,
         "width": 520,
         "color": 4
       },
-      "id": "c2de945c-dc63-4a6a-b58b-3fdc0e1586b3",
+      "id": "3a98b3b3-7189-4b0c-93cf-4cf11bc8e44b",
       "name": "Nota 9",
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
@@ -387,7 +387,7 @@
           "maxIterations": 6
         }
       },
-      "id": "5970c30b-9fda-4e6b-a40d-374e8a05a094",
+      "id": "9cde445d-8750-4d10-968e-8e54c34c4370",
       "name": "Agente de consultas",
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 1.9,
@@ -402,14 +402,14 @@
     },
     {
       "parameters": {
-        "modelName": "models/gemini-2.5-flash",
+        "modelName": "models/gemini-3.5-flash-lite",
         "options": {
           "temperature": 0.2,
           "maxOutputTokens": 2048
         }
       },
-      "id": "b38be91b-bc14-4d7a-ab76-99d3bf72a524",
-      "name": "Gemini 2.5 Flash",
+      "id": "486537f6-9d15-4c83-9ac5-fc17fa57fc01",
+      "name": "Gemini Flash",
       "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
       "typeVersion": 1,
       "position": [
@@ -433,7 +433,7 @@
           "queryName": "match_documents"
         }
       },
-      "id": "73f2eaeb-bbff-4a62-856b-d16d89e38b5c",
+      "id": "08983cae-f230-41e6-8d8c-83b19f4f3e0f",
       "name": "Base de conocimiento (Supabase)",
       "type": "@n8n/n8n-nodes-langchain.vectorStoreSupabase",
       "typeVersion": 1.1,
@@ -446,7 +446,7 @@
       "parameters": {
         "modelName": "models/gemini-embedding-001"
       },
-      "id": "c5a31897-d6e4-42f1-94af-e3c1fef3bc6e",
+      "id": "250518b0-4cc5-4aca-91ae-2d7e614f87a3",
       "name": "Embeddings Gemini",
       "type": "@n8n/n8n-nodes-langchain.embeddingsGoogleGemini",
       "typeVersion": 1,
@@ -460,7 +460,7 @@
         "schemaType": "manual",
         "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"accion\": {\n      \"type\": \"string\",\n      \"enum\": [\n        \"responder\",\n        \"agendar_turno\",\n        \"pedir_datos\",\n        \"derivar_humano\",\n        \"fuera_de_alcance\"\n      ]\n    },\n    \"categoria\": {\n      \"type\": \"string\",\n      \"enum\": [\n        \"servicio_precio\",\n        \"turno\",\n        \"garantia_reclamo\",\n        \"diagnostico\",\n        \"pagos_envios\",\n        \"otro\"\n      ]\n    },\n    \"prioridad\": {\n      \"type\": \"string\",\n      \"enum\": [\n        \"baja\",\n        \"media\",\n        \"alta\"\n      ]\n    },\n    \"respuesta_cliente\": {\n      \"type\": \"string\"\n    },\n    \"resumen_interno\": {\n      \"type\": \"string\"\n    },\n    \"datos_turno\": {\n      \"type\": [\n        \"object\",\n        \"null\"\n      ],\n      \"properties\": {\n        \"servicio\": {\n          \"type\": \"string\"\n        },\n        \"fecha_preferida\": {\n          \"type\": \"string\"\n        },\n        \"franja\": {\n          \"type\": \"string\"\n        }\n      }\n    },\n    \"fuentes\": {\n      \"type\": \"array\",\n      \"items\": {\n        \"type\": \"string\"\n      }\n    },\n    \"confianza\": {\n      \"type\": \"number\",\n      \"minimum\": 0,\n      \"maximum\": 1\n    }\n  },\n  \"required\": [\n    \"accion\",\n    \"categoria\",\n    \"prioridad\",\n    \"respuesta_cliente\",\n    \"resumen_interno\",\n    \"fuentes\",\n    \"confianza\"\n  ]\n}"
       },
-      "id": "56e27c0e-175a-4c90-8f44-2abf245b3245",
+      "id": "89149ffe-b4da-412f-99c8-c03529631261",
       "name": "Decisión estructurada",
       "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
       "typeVersion": 1.2,
@@ -476,7 +476,7 @@
         "width": 420,
         "color": 6
       },
-      "id": "d84f58aa-34dd-40e8-8403-8e1f6c7dba11",
+      "id": "39867f89-d8cd-4cb2-abad-a78523bb1898",
       "name": "Nota 15",
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
@@ -496,7 +496,7 @@
           },
           "conditions": [
             {
-              "id": "02604b94-bd0f-4b2b-a242-f6bed6ffdb93",
+              "id": "baf934e6-d5a0-4a1e-901b-451e27b6ddb9",
               "leftValue": "={{ $json.output?.accion || \"\" }}",
               "operator": {
                 "type": "string",
@@ -505,7 +505,7 @@
               "rightValue": "^(responder|agendar_turno|pedir_datos|derivar_humano|fuera_de_alcance)$"
             },
             {
-              "id": "a6a7c0fe-73bb-498d-98e2-fecf74b2c103",
+              "id": "640e1098-0358-401d-9e12-d6266913ffa0",
               "leftValue": "={{ ($json.output?.respuesta_cliente || \"\").trim() }}",
               "operator": {
                 "type": "string",
@@ -515,7 +515,7 @@
               "rightValue": ""
             },
             {
-              "id": "3b538e43-68fb-4670-979d-8bc70a1908c4",
+              "id": "ecf3a98f-11e0-4c70-bb76-5bc64c2188f3",
               "leftValue": "={{ $json.output?.confianza ?? 0 }}",
               "operator": {
                 "type": "number",
@@ -529,7 +529,7 @@
         "looseTypeValidation": true,
         "options": {}
       },
-      "id": "f473f6b4-a7a8-43ae-b625-31ef95cec1b1",
+      "id": "47919e77-3594-40ec-b241-d20b35677252",
       "name": "¿Decisión válida?",
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
@@ -543,103 +543,103 @@
         "assignments": {
           "assignments": [
             {
-              "id": "71f9e340-5b86-4c19-a047-7fb002f81948",
+              "id": "f99bbcf6-ae50-4377-8249-4fdf7f3a8e1c",
               "name": "canal",
               "value": "={{ $('¿Consulta válida?').item.json.canal }}",
               "type": "string"
             },
             {
-              "id": "56a2eec1-f50c-4a51-9078-3d0df1028ec2",
+              "id": "5e19b9a0-e874-4de3-a01c-2f74f9641f0d",
               "name": "nombre",
               "value": "={{ $('¿Consulta válida?').item.json.nombre }}",
               "type": "string"
             },
             {
-              "id": "8f1a26ab-f559-4cce-8b25-5c6ced008766",
+              "id": "c1951c1d-673c-478d-b440-2ad01b6c7863",
               "name": "email",
               "value": "={{ $('¿Consulta válida?').item.json.email }}",
               "type": "string"
             },
             {
-              "id": "7406f747-6e9c-4b48-a150-7a4f8ed3c96f",
+              "id": "09c5f512-042c-4595-b7a0-c9542bab2bf6",
               "name": "asunto",
               "value": "={{ $('¿Consulta válida?').item.json.asunto }}",
               "type": "string"
             },
             {
-              "id": "c479d924-5e15-4e31-bf10-37ea86ec29e8",
+              "id": "8697423b-3711-4547-bd28-9b49d2075e60",
               "name": "mensaje",
               "value": "={{ $('¿Consulta válida?').item.json.mensaje }}",
               "type": "string"
             },
             {
-              "id": "327ca40a-1774-4303-b51c-e1c7023b074b",
+              "id": "3ae1229c-9226-4660-b22f-7ca27eef8f81",
               "name": "recibida",
               "value": "={{ $('¿Consulta válida?').item.json.recibida }}",
               "type": "string"
             },
             {
-              "id": "a9341b8d-5dfe-4ee0-9ce6-9ead07215e6d",
+              "id": "a177dc75-97e5-440a-ab29-6e930bae32a5",
               "name": "accion",
               "value": "={{ $json.output.accion }}",
               "type": "string"
             },
             {
-              "id": "55cb643f-a4d8-4d28-8a3c-6fd945dd7b58",
+              "id": "c796315d-0c52-4cb7-aa8a-f4e86026fb0c",
               "name": "categoria",
               "value": "={{ $json.output.categoria }}",
               "type": "string"
             },
             {
-              "id": "49f0ecdb-bb6a-4968-9149-e5407e35602a",
+              "id": "60c1ed03-3ca0-4b82-9798-011aa57508a2",
               "name": "prioridad",
               "value": "={{ $json.output.prioridad }}",
               "type": "string"
             },
             {
-              "id": "f9509b52-4235-4482-b66b-e2ca81825b97",
+              "id": "3ec3c0bc-0416-485f-b0ff-1bb89beaf333",
               "name": "respuesta_cliente",
               "value": "={{ $json.output.respuesta_cliente }}",
               "type": "string"
             },
             {
-              "id": "38422d2d-cec6-48ce-9c49-13912617fdcd",
+              "id": "ffa8d441-4daa-48aa-ba6e-c69ff0d37bdb",
               "name": "resumen",
               "value": "={{ $json.output.resumen_interno }}",
               "type": "string"
             },
             {
-              "id": "a6c034ef-a33c-47b2-9cf4-390b89bdd527",
+              "id": "7345fa99-1a43-4d75-95c0-b8e25921ec33",
               "name": "servicio",
               "value": "={{ $json.output.datos_turno?.servicio || \"\" }}",
               "type": "string"
             },
             {
-              "id": "5c7cf09b-36de-4174-9e8c-b0e0d6d5b158",
+              "id": "1c5e7141-e998-4828-a782-0d93f9bd659f",
               "name": "fecha_preferida",
               "value": "={{ $json.output.datos_turno?.fecha_preferida || \"\" }}",
               "type": "string"
             },
             {
-              "id": "ed735e07-8635-4760-b80c-9926055de28b",
+              "id": "7dcdd9f2-6225-45a5-b432-41e0682856dd",
               "name": "franja",
               "value": "={{ $json.output.datos_turno?.franja || \"\" }}",
               "type": "string"
             },
             {
-              "id": "ad0e251e-b5bf-4162-b9d1-3c5c92ee4d0d",
+              "id": "03b0b696-653f-4772-a149-c8cd99ccddfa",
               "name": "fuentes",
               "value": "={{ ($json.output.fuentes || []).join(\", \") }}",
               "type": "string"
             },
             {
-              "id": "8263a9f2-0a07-467b-b9cc-a8b05a5d63d0",
+              "id": "f3529a18-e59f-460f-8a1c-4016627ebbce",
               "name": "confianza",
               "value": "={{ $json.output.confianza }}",
               "type": "number"
             },
             {
-              "id": "68881d5c-7704-43d0-a7e4-d0886f331ee9",
+              "id": "04fbd723-85aa-4f0d-9956-e92388b8eb95",
               "name": "estado",
               "value": "automatico",
               "type": "string"
@@ -648,7 +648,7 @@
         },
         "options": {}
       },
-      "id": "529586b4-b023-47bc-a5e7-13d02ba25110",
+      "id": "41405685-a02b-433b-92cf-654bb99a9a05",
       "name": "Decisión del agente",
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
@@ -662,103 +662,103 @@
         "assignments": {
           "assignments": [
             {
-              "id": "9b20d7f8-08c6-4344-8512-f67c46f31e37",
+              "id": "e89d8a34-3db8-45f4-809c-366c97733751",
               "name": "canal",
               "value": "={{ $('¿Consulta válida?').item.json.canal }}",
               "type": "string"
             },
             {
-              "id": "3380bdbd-de69-4cbb-84b3-c6c259a29956",
+              "id": "d5f3bc5b-a191-442b-a3a5-d0a3461f9ea1",
               "name": "nombre",
               "value": "={{ $('¿Consulta válida?').item.json.nombre }}",
               "type": "string"
             },
             {
-              "id": "d1921914-e31a-4ada-b435-9d3a7198dbc5",
+              "id": "7b7f88f1-5cdc-4f43-bed0-5ff7cea59f52",
               "name": "email",
               "value": "={{ $('¿Consulta válida?').item.json.email }}",
               "type": "string"
             },
             {
-              "id": "9a5af431-3cae-4fea-a5ab-5a019b6e5ed2",
+              "id": "cd2eac98-2b6f-4cc4-a000-28f1ac0981f9",
               "name": "asunto",
               "value": "={{ $('¿Consulta válida?').item.json.asunto }}",
               "type": "string"
             },
             {
-              "id": "7717eccf-6323-488b-8174-2986d2f606dc",
+              "id": "f19b74c5-6369-44b7-ab09-a14bb0575654",
               "name": "mensaje",
               "value": "={{ $('¿Consulta válida?').item.json.mensaje }}",
               "type": "string"
             },
             {
-              "id": "0c866ab6-eb5d-4836-bf0e-a8c90c7088fd",
+              "id": "94d88cb5-7a2e-4ea5-9aee-3aaad0f8de50",
               "name": "recibida",
               "value": "={{ $('¿Consulta válida?').item.json.recibida }}",
               "type": "string"
             },
             {
-              "id": "62f06e19-ffdd-43e4-9457-808f8949c5eb",
+              "id": "9ffbd468-2d99-4b0a-b6f2-e76706735ad0",
               "name": "accion",
               "value": "derivar_humano",
               "type": "string"
             },
             {
-              "id": "246b99d5-d3f8-4918-b442-e6b3fb5f0def",
+              "id": "8a8c0bcc-8b39-4869-b168-580b260f84bf",
               "name": "categoria",
               "value": "={{ $json.output?.categoria || \"otro\" }}",
               "type": "string"
             },
             {
-              "id": "5bfe8927-704d-421b-b846-073c6d7dc7f8",
+              "id": "dfb3ecb8-3e0f-400a-831b-c7de65349bb2",
               "name": "prioridad",
               "value": "alta",
               "type": "string"
             },
             {
-              "id": "28733653-6ee3-4022-b900-fa0dddfba89c",
+              "id": "39e052cb-b6e4-438a-918b-3d3bdfa8acd4",
               "name": "respuesta_cliente",
               "value": "=Hola{{ $('¿Consulta válida?').item.json.nombre ? \" \" + $('¿Consulta válida?').item.json.nombre : \"\" }}, recibimos tu consulta. Una persona del taller la va a revisar y te responde dentro de las 24 h hábiles.\n\nEquipo Rodado",
               "type": "string"
             },
             {
-              "id": "b294605e-c645-4577-9f76-ac408bafdf91",
+              "id": "3609925c-0fb0-41c3-bd99-9c98986ccdf0",
               "name": "resumen",
               "value": "={{ \"CONTINGENCIA: \" + ($json.error?.message || $json.error || (\"decisión inválida o con baja confianza (\" + ($json.output?.accion || \"sin acción\") + \", confianza \" + ($json.output?.confianza ?? \"-\") + \")\")) }}",
               "type": "string"
             },
             {
-              "id": "ac460874-346c-4067-8422-a63fe3029610",
+              "id": "dab67e7e-6847-497d-a9d9-e54ec5a150b8",
               "name": "servicio",
               "value": "",
               "type": "string"
             },
             {
-              "id": "b9097714-eece-41cc-a528-a3086a5856f3",
+              "id": "94991f8d-d3f8-4e2c-9843-0c88fcf09e36",
               "name": "fecha_preferida",
               "value": "",
               "type": "string"
             },
             {
-              "id": "3240b7fc-ae25-4341-946c-0a4f3540fbe5",
+              "id": "e82f7375-0128-4bdf-b185-53dfad7599cd",
               "name": "franja",
               "value": "",
               "type": "string"
             },
             {
-              "id": "ffbf3bcb-6f40-4783-946d-8ac7987dde0f",
+              "id": "0ada7935-dcfb-4c32-85ef-adfdb763aa70",
               "name": "fuentes",
               "value": "",
               "type": "string"
             },
             {
-              "id": "11c0b36b-5952-46e3-9940-16c85feae502",
+              "id": "15ea9b75-b738-4b1f-ac2f-bab4a3a18158",
               "name": "confianza",
               "value": "={{ $json.output?.confianza ?? 0 }}",
               "type": "number"
             },
             {
-              "id": "07343c8c-0828-4b59-a3b8-5af13849d68c",
+              "id": "9c85855b-c559-4be2-91f5-8099476db0e5",
               "name": "estado",
               "value": "contingencia",
               "type": "string"
@@ -767,7 +767,7 @@
         },
         "options": {}
       },
-      "id": "1f28a517-8358-405f-aec5-7c388855bcd5",
+      "id": "e9174921-a376-40e8-b85e-3c1a5519348a",
       "name": "Contingencia (lo resuelve una persona)",
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
@@ -790,7 +790,7 @@
                 },
                 "conditions": [
                   {
-                    "id": "0f2045da-f2b4-4945-bfa1-28dc83c5c175",
+                    "id": "54230c3e-ebb1-41cf-8458-7a721f299b81",
                     "leftValue": "={{ $json.accion }}",
                     "operator": {
                       "type": "string",
@@ -814,7 +814,7 @@
                 },
                 "conditions": [
                   {
-                    "id": "2aa5ed6e-e234-4a35-b78f-91ac76899e48",
+                    "id": "4cc35c6c-d49e-4b07-9ac9-f30d73323f54",
                     "leftValue": "={{ $json.accion }}",
                     "operator": {
                       "type": "string",
@@ -838,7 +838,7 @@
                 },
                 "conditions": [
                   {
-                    "id": "747b7c0e-3a0e-4209-8630-c9fe6d9a252c",
+                    "id": "ef1084df-1216-44b4-8f35-a817ad00284c",
                     "leftValue": "={{ $json.accion }}",
                     "operator": {
                       "type": "string",
@@ -862,7 +862,7 @@
                 },
                 "conditions": [
                   {
-                    "id": "9997bc97-707d-4db0-b19d-d7a24d57d086",
+                    "id": "347472dc-cd7f-4f68-bf4c-1fcb2267ee12",
                     "leftValue": "={{ $json.accion }}",
                     "operator": {
                       "type": "string",
@@ -886,7 +886,7 @@
                 },
                 "conditions": [
                   {
-                    "id": "468f5601-f60c-4560-9576-f6330eccc6c5",
+                    "id": "4eb2b1ad-a6f6-466d-bf98-d050d20d4da1",
                     "leftValue": "={{ $json.accion }}",
                     "operator": {
                       "type": "string",
@@ -906,7 +906,7 @@
           "fallbackOutput": 3
         }
       },
-      "id": "c7d3adcb-897e-4c2c-b056-5e50124f4645",
+      "id": "fe04eef3-b49e-4436-b65a-aaaf7ac2f0ac",
       "name": "Ruteo por acción",
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.2,
@@ -922,7 +922,7 @@
         "width": 420,
         "color": 4
       },
-      "id": "440268b9-5f7e-4f22-ac9a-5804f35c4572",
+      "id": "656b537b-49c2-4251-afe4-c3a48fbe7967",
       "name": "Nota 20",
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
@@ -936,43 +936,43 @@
         "assignments": {
           "assignments": [
             {
-              "id": "72f57bf0-cbef-4795-a60d-1155abd8c68a",
+              "id": "e9ee8aca-26b9-48d9-87ba-ae7148946cba",
               "name": "fecha_pedido",
               "value": "={{ $json.recibida }}",
               "type": "string"
             },
             {
-              "id": "9b26f633-e7f0-4053-94e8-2d004f1d521c",
+              "id": "9345f56e-4e94-409a-956e-fc15b02a4365",
               "name": "nombre",
               "value": "={{ $json.nombre }}",
               "type": "string"
             },
             {
-              "id": "f718bda3-1971-4b42-bd01-af42dbb17396",
+              "id": "d029edec-f107-490f-8faf-a06c07d0ae27",
               "name": "email",
               "value": "={{ $json.email }}",
               "type": "string"
             },
             {
-              "id": "6ed67290-6b86-4b23-8092-c8bc6acafb48",
+              "id": "8931160e-c940-459f-9516-b6e5506d1fda",
               "name": "servicio",
               "value": "={{ $json.servicio }}",
               "type": "string"
             },
             {
-              "id": "47219a37-73cd-459a-aa85-a8a0a911e830",
+              "id": "ac10834b-a255-403d-8252-d8ed2e86f6e5",
               "name": "fecha_preferida",
               "value": "={{ $json.fecha_preferida }}",
               "type": "string"
             },
             {
-              "id": "ac1375fd-f4eb-4425-bd2b-979058638ae1",
+              "id": "f07ca7ca-6305-4e7e-a42a-a3ed0eccf7ef",
               "name": "franja",
               "value": "={{ $json.franja }}",
               "type": "string"
             },
             {
-              "id": "e0d18289-b67a-42ee-ab63-35ea5a734704",
+              "id": "7eaba573-8fac-48f7-87d6-a2783617fcfc",
               "name": "estado",
               "value": "pendiente de confirmar",
               "type": "string"
@@ -981,7 +981,7 @@
         },
         "options": {}
       },
-      "id": "ed344ca2-0921-48cc-9e93-d09671b4f065",
+      "id": "579beeaf-2481-46c1-978b-7b8a439627f8",
       "name": "Turno pendiente",
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
@@ -1001,7 +1001,7 @@
         },
         "sheetName": {
           "__rl": true,
-          "value": "Turnos",
+          "value": "turnos",
           "mode": "name"
         },
         "columns": {
@@ -1012,7 +1012,7 @@
         },
         "options": {}
       },
-      "id": "fb1ac042-be66-4948-a86f-883c24238d35",
+      "id": "c9e307d3-85fa-4d7b-a6e0-d876e601715b",
       "name": "Agregar a Turnos",
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.5,
@@ -1033,7 +1033,7 @@
           "appendAttribution": false
         }
       },
-      "id": "dc195c71-d51a-47e0-83dd-5d415c9a8964",
+      "id": "4e97d1bd-6283-46f0-874a-36194c2b99ac",
       "name": "Alerta al encargado",
       "type": "n8n-nodes-base.gmail",
       "typeVersion": 2.1,
@@ -1054,7 +1054,7 @@
           "appendAttribution": false
         }
       },
-      "id": "47767742-99e2-4378-8a8d-e7d00724604b",
+      "id": "c10c9135-ade2-4172-a9ee-1965138a760a",
       "name": "Responder al cliente",
       "type": "n8n-nodes-base.gmail",
       "typeVersion": 2.1,
@@ -1072,79 +1072,79 @@
         "assignments": {
           "assignments": [
             {
-              "id": "857ac67c-376e-41f0-a51b-bac614ab917d",
+              "id": "6a0427c2-7786-4b3e-a8a1-85f3eb049545",
               "name": "fecha",
               "value": "={{ $('Ruteo por acción').item.json.recibida }}",
               "type": "string"
             },
             {
-              "id": "02ca2245-4890-4d25-8f20-5879a49e79e5",
+              "id": "4ce23afd-8b34-4d94-9229-23d611c4c453",
               "name": "canal",
               "value": "={{ $('Ruteo por acción').item.json.canal }}",
               "type": "string"
             },
             {
-              "id": "4a583225-4a1d-424a-99d4-497dead058fe",
+              "id": "fd437f6a-2c2e-482f-b0e8-4a604ebf0dce",
               "name": "nombre",
               "value": "={{ $('Ruteo por acción').item.json.nombre }}",
               "type": "string"
             },
             {
-              "id": "4dd2b014-2d04-4f09-974e-44862e66eb00",
+              "id": "cf418fab-2c90-4e16-92b5-01b1d2af4f20",
               "name": "email",
               "value": "={{ $('Ruteo por acción').item.json.email }}",
               "type": "string"
             },
             {
-              "id": "30c47547-91dc-4e5d-aa56-2a206ef28643",
+              "id": "4fc24c7c-80cb-4098-a242-046d05d7f266",
               "name": "asunto",
               "value": "={{ $('Ruteo por acción').item.json.asunto }}",
               "type": "string"
             },
             {
-              "id": "7eb5901a-efe0-4d1f-9314-d1c340557f45",
+              "id": "b26179b5-cca4-43d6-b1e0-657134a04b4b",
               "name": "mensaje",
               "value": "={{ $('Ruteo por acción').item.json.mensaje.slice(0, 500) }}",
               "type": "string"
             },
             {
-              "id": "359d3f42-213c-4e3a-9a75-7e61d81da14f",
+              "id": "d7654c80-314c-4147-aed5-8d1391386adb",
               "name": "accion",
               "value": "={{ $('Ruteo por acción').item.json.accion }}",
               "type": "string"
             },
             {
-              "id": "e90e7123-a1d6-41cc-9e70-54efa4804ce6",
+              "id": "fb822d2a-0c15-40aa-a549-356613c191c5",
               "name": "categoria",
               "value": "={{ $('Ruteo por acción').item.json.categoria }}",
               "type": "string"
             },
             {
-              "id": "0d8b8fd3-df29-423a-8e53-37a618180399",
+              "id": "9028e2f3-f299-451b-87c4-08bfdb96577a",
               "name": "prioridad",
               "value": "={{ $('Ruteo por acción').item.json.prioridad }}",
               "type": "string"
             },
             {
-              "id": "b291983f-c017-4a78-a9d2-e12bb82aeb95",
+              "id": "a7004367-82ba-4508-8686-c87cb990bdd1",
               "name": "confianza",
               "value": "={{ $('Ruteo por acción').item.json.confianza }}",
               "type": "string"
             },
             {
-              "id": "b12b4288-eb5d-47cf-9e71-741813d45ea1",
+              "id": "2049e17b-e4ad-490d-92ca-120efa4cb413",
               "name": "fuentes",
               "value": "={{ $('Ruteo por acción').item.json.fuentes }}",
               "type": "string"
             },
             {
-              "id": "19d9dc93-6302-4bce-aed0-db8a91dbef58",
+              "id": "f4373b7f-66e5-4b47-b464-b49a78bdddee",
               "name": "resumen",
               "value": "={{ $('Ruteo por acción').item.json.resumen }}",
               "type": "string"
             },
             {
-              "id": "5e1f16b9-bbc1-4ef7-915d-483c1470d54b",
+              "id": "5afb47e0-f6ad-4efc-a326-07e3c8c8fc94",
               "name": "estado",
               "value": "={{ $('Ruteo por acción').item.json.estado === \"contingencia\" ? \"contingencia, respondida\" : \"respondida\" }}",
               "type": "string"
@@ -1153,7 +1153,7 @@
         },
         "options": {}
       },
-      "id": "7dccd958-61eb-4bd1-8202-1dc4bfb865e0",
+      "id": "d7c62a9c-bb80-47cb-b646-ca295b1c3141",
       "name": "Fila de registro",
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
@@ -1167,79 +1167,79 @@
         "assignments": {
           "assignments": [
             {
-              "id": "adb3d6ff-a243-4b85-9160-aa9dfc346c29",
+              "id": "5ee93650-a531-46cb-afee-4ddd347b6ac7",
               "name": "fecha",
               "value": "={{ $('Ruteo por acción').item.json.recibida }}",
               "type": "string"
             },
             {
-              "id": "8747a5a2-6c47-45c5-9ebd-826d608453b8",
+              "id": "506c3b79-e3a7-4709-9abc-918f12d321fd",
               "name": "canal",
               "value": "={{ $('Ruteo por acción').item.json.canal }}",
               "type": "string"
             },
             {
-              "id": "1ea78616-ee2e-4049-93f1-92d22d7737e2",
+              "id": "eaf6a6ef-bf84-4b34-be60-4ad76f65bac5",
               "name": "nombre",
               "value": "={{ $('Ruteo por acción').item.json.nombre }}",
               "type": "string"
             },
             {
-              "id": "72cdd8f5-5900-4eee-bcc6-d30fce8060b6",
+              "id": "03f920cb-accd-4fa7-ac0d-87141c7c1429",
               "name": "email",
               "value": "={{ $('Ruteo por acción').item.json.email }}",
               "type": "string"
             },
             {
-              "id": "3bca2bd2-b992-43a1-97a2-24c65f40ab30",
+              "id": "79b283e5-6d7c-4f85-a025-325fa46c0aed",
               "name": "asunto",
               "value": "={{ $('Ruteo por acción').item.json.asunto }}",
               "type": "string"
             },
             {
-              "id": "f92c389a-1a14-4614-9fde-2c445639bded",
+              "id": "28fd4821-4506-431e-a469-6a2b60920598",
               "name": "mensaje",
               "value": "={{ $('Ruteo por acción').item.json.mensaje.slice(0, 500) }}",
               "type": "string"
             },
             {
-              "id": "e2bfd968-aa5e-4703-8ca1-1ebc51b34b4d",
+              "id": "b0f3d85b-84ee-4492-bfd6-8cd712e104a9",
               "name": "accion",
               "value": "={{ $('Ruteo por acción').item.json.accion }}",
               "type": "string"
             },
             {
-              "id": "d025541d-f4f3-43d9-8951-5fc2cedb402c",
+              "id": "54381c76-91ed-4f80-9a70-b71a4d0f15b4",
               "name": "categoria",
               "value": "={{ $('Ruteo por acción').item.json.categoria }}",
               "type": "string"
             },
             {
-              "id": "bb3e7e33-0622-4d6a-b268-5a62dee95fb9",
+              "id": "aebe31a2-5969-4a8d-b83d-7bacd21861ac",
               "name": "prioridad",
               "value": "={{ $('Ruteo por acción').item.json.prioridad }}",
               "type": "string"
             },
             {
-              "id": "31566a28-53f2-421f-8a61-eaa1bfcb3bc2",
+              "id": "f8cff509-9caf-4ca0-be2d-e535ce72500c",
               "name": "confianza",
               "value": "={{ $('Ruteo por acción').item.json.confianza }}",
               "type": "string"
             },
             {
-              "id": "31efe934-fc38-4739-b8e2-5cc72c825b19",
+              "id": "a4361498-b92c-4932-9ad1-914ad3042e7a",
               "name": "fuentes",
               "value": "={{ $('Ruteo por acción').item.json.fuentes }}",
               "type": "string"
             },
             {
-              "id": "c248eec7-1887-4a99-a207-6b7926698230",
+              "id": "5d36c44e-7d66-4cdf-9f85-4fd4fbd481a8",
               "name": "resumen",
               "value": "={{ $('Ruteo por acción').item.json.resumen }}",
               "type": "string"
             },
             {
-              "id": "ad978b71-bfc8-4391-9868-07a9026bb2d9",
+              "id": "c4bf0df3-f3d3-4f8f-8bb9-798f59727a5a",
               "name": "estado",
               "value": "=ERROR al enviar el mail: {{ $json.error?.message || $json.error }}",
               "type": "string"
@@ -1248,7 +1248,7 @@
         },
         "options": {}
       },
-      "id": "ffd30a1e-d067-49a7-a41a-97e9a9ef1080",
+      "id": "01ee953d-28c3-41f9-80f1-073e27128b01",
       "name": "Fila sin respuesta enviada",
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
@@ -1268,7 +1268,7 @@
         },
         "sheetName": {
           "__rl": true,
-          "value": "Registro",
+          "value": "registro",
           "mode": "name"
         },
         "columns": {
@@ -1279,7 +1279,7 @@
         },
         "options": {}
       },
-      "id": "79738e82-67bc-47c5-949f-113847bc4291",
+      "id": "9a984a29-c520-494c-8faf-7edca3b2ef2e",
       "name": "Agregar a Registro",
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.5,
@@ -1363,7 +1363,7 @@
         ]
       ]
     },
-    "Gemini 2.5 Flash": {
+    "Gemini Flash": {
       "ai_languageModel": [
         [
           {
@@ -1582,7 +1582,8 @@
   "settings": {
     "executionOrder": "v1",
     "saveManualExecutions": true,
-    "callerPolicy": "workflowsFromSameOwner"
+    "callerPolicy": "workflowsFromSameOwner",
+    "executionTimeout": 120
   },
   "pinData": {},
   "meta": {
